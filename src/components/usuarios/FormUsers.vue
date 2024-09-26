@@ -32,11 +32,7 @@ onMounted(async () => {
 const submitForm = async () => {
   const user = { name: name.value, email: email.value }
   try {
-    if (isEditing.value) {
-      await userStore.updateUser(userId.value, user)
-    } else {
-      await userStore.addUser(user)
-    }
+    await userStore.addUser(user)
 
     router.push('/')
   } catch {
@@ -44,21 +40,39 @@ const submitForm = async () => {
   }
 }
 </script>
-<!-- src/components/UserForm.vue -->
+
 <template>
-  <div>
-    <h2>{{ isEditing ? 'Edit User' : 'Create User' }}</h2>
-    <form @submit.prevent="submitForm">
-      <div>
-        <label for="name">Name:</label>
-        <input v-model="name" type="text" id="name" required />
+  <div class="row mx-5 d-flex justify-content-sart">
+    <form @submit.prevent="submitForm" class="col-md-8 mb-4 p-4 border rounded p-4">
+      <div class="mb-3">
+        <label for="name" class="col-form-label">Nombre</label>
+        <input
+          v-model="name"
+          type="text"
+          id="name"
+          required
+          class="form-control"
+          placeholder="Ingresa nombre de usuario"
+        />
       </div>
-      <div>
-        <label for="email">Email:</label>
-        <input v-model="email" type="email" id="email" required />
+
+      <div class="mb-5">
+        <label for="email" class="col-form-label">Correo</label>
+        <input
+          v-model="email"
+          type="email"
+          id="email"
+          required
+          class="form-control"
+          placeholder="nombre@correo.com"
+        />
       </div>
-      <button type="submit">{{ isEditing ? 'Update' : 'Submit' }}</button>
-      <router-link v-if="isEditing" to="/">Cancel</router-link>
+
+      <div class="d-grid">
+        <button class="btn btn-primary" type="submit">
+          {{ 'Crear' }}
+        </button>
+      </div>
     </form>
   </div>
 </template>

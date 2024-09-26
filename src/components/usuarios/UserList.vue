@@ -3,7 +3,6 @@ import { onMounted } from 'vue'
 import { useUserStore } from '@/stores/userStore'
 
 const userStore = useUserStore()
-const users = userStore.users
 
 onMounted(async () => {
   try {
@@ -16,20 +15,38 @@ onMounted(async () => {
 const removeUser = (id) => {
   userStore.deleteUser(id)
 }
+const updateUser = (id) => {
+  userStore.updateUser(id)
+}
 </script>
 
 <template>
-  <div>
-    <h2>Lista de usuarios</h2>
-
-    <router-link to="/add">Crear nuevo usuario </router-link>
-    <ul v-if="users.length">
-      <li v-for="user in users" :key="user.id">
-        {{ user.name }} - {{ user.email }}
-        <button @click="removeUser(user.id)">Delete</button>
-        <router-link :to="'/edit/' + user.id">Edit</router-link>
-      </li>
-    </ul>
-    <p v-else>No hay usuarios disponibles</p>
+  <div class="row mx-5 mt-5">
+    <h3>Gestión de Usuarios</h3>
+    <table class="table table-hover table-bordered mt-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(user, idx) in userStore.users" :key="user.id">
+          <th scope="row">{{ idx + 1 }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td class="d-grid gap-3">
+            <button class="btn btn-sm btn-outline-success" @click="updateUser(user.id)">
+              Editar
+            </button>
+            <button class="btn btn-sm btn-outline-danger" @click="removeUser(user.id)">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>

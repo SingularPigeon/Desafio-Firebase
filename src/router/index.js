@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '@/views/HomeView.vue'
 import FormUsers from '@/components/usuarios/FormUsers.vue'
-
-import HomeView from '../views/Homeview.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,18 +8,21 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomeView
+      component: HomeView,
+      children: [
+        {
+          path: 'add',
+          name: 'addUser',
+          component: () => import('@/components/usuarios/FormUsers.vue')
+        }
+      ]
     },
-    {
-      path: '/add',
-      name: 'AddUser',
-      component: FormUsers
-    },
+
     {
       path: '/edit/:id',
       name: 'EditUser',
       component: FormUsers,
-      props: true // Pass route params as props
+      props: true
     }
   ]
 })
