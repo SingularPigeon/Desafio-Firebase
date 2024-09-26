@@ -1,4 +1,3 @@
-// src/stores/userStore.js
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { collection, addDoc, deleteDoc, doc, updateDoc, onSnapshot } from 'firebase/firestore'

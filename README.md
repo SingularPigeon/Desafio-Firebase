@@ -1,35 +1,18 @@
-# desafío-firebase
+# Desafío-firebase
 
-This template should help get you started developing with Vue 3 in Vite.
+Realización de un CRUD para el crear, editar, eliminar y listar usuarios. Utilizando Firestore, Pinia y Vue Router.
+![](/public/preview-usuarios.png)
 
-## Recommended IDE Setup
+## Dependencias
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue 3
+- Vue Router
+- Pinia
+- Firebase
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Autores
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- **Desarolladora**:[Paloma Rivera](https://github.com/SingularPigeon)
+- **Diseño**: [Bootcamp Desafío Latam](desafiolatam.com)
